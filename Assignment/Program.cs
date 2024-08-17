@@ -185,6 +185,81 @@
                 Console.WriteLine($"Chars: {chars}");
             }
             #endregion
+
+
+            //LINQ - Partitioning Operators
+
+            #region 1. Get the first 3 orders from customers in Washington
+
+            var firstThreeOrdersInWashington = customers.Where(c => c.Region == "Washington")
+                                                   .SelectMany(c => c.Orders)
+                                                   .Take(3);
+
+            Console.WriteLine("\nFirst 3 Orders in Washington:");
+            foreach (var order in firstThreeOrdersInWashington)
+            {
+                Console.WriteLine($"Order ID: {order.OrderID}, Order Date: {order.OrderDate}");
+            }
+
+            #endregion
+
+            #region 2. Get all but the first 2 orders from customers in Washington.
+
+
+            var allButFirstTwoOrdersInWashington = customers.Where(c => c.Region == "Washington")
+                                                      .SelectMany(c => c.Orders)
+                                                      .Skip(2);
+
+            Console.WriteLine("\nAll But First 2 Orders in Washington:");
+            foreach (var order in allButFirstTwoOrdersInWashington)
+            {
+                Console.WriteLine($"Order ID: {order.OrderID}, Order Date: {order.OrderDate}");
+            }
+
+
+            #endregion
+
+            #region 3. Return elements starting from the beginning of the array until a number is hit that is less than its position in the array. 
+            int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            var elementsBeforePositionLessThanNumber = numbers.TakeWhile((n, index) => n >= index);
+
+            Console.WriteLine("\nElements before hitting a number less than its position:");
+            foreach (var number in elementsBeforePositionLessThanNumber)
+            {
+                Console.WriteLine($"Number: {number}");
+            }
+
+
+
+            #endregion
+
+            #region  4. Get the elements of the array starting from the first element divisible by 3.
+
+            var elementsFromFirstDivisibleBy3 = numbers.SkipWhile(n => n % 3 != 0);
+
+            Console.WriteLine("\nElements starting from the first divisible by 3:");
+            foreach (var number in elementsFromFirstDivisibleBy3)
+            {
+                Console.WriteLine($"Number: {number}");
+            }
+            #endregion
+
+            #region  5. Get the elements of the array starting from the first element less than its position.
+
+            var elementsFromFirstLessThanPosition = numbers.SkipWhile((n, index) => n >= index);
+
+            Console.WriteLine("\nElements starting from the first element less than its position:");
+            foreach (var number in elementsFromFirstLessThanPosition)
+            {
+                Console.WriteLine($"Number: {number}");
+            }
+            #endregion
+
+
+
+
+
         }
     }
 }
