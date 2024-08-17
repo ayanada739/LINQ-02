@@ -1,4 +1,7 @@
 ﻿using System.Collections;
+using System;
+using static LINQ_02.ListGenerator;
+using System.Text.RegularExpressions;
 
 namespace LINQ_02
 {
@@ -275,6 +278,30 @@ namespace LINQ_02
             //    Console.WriteLine(item);
             //}
 
+            #endregion
+
+            #region Let And Into [Valid Only With Query Syntax]
+
+            //List<string> Names = new List<string>() { "Omar", "Ahmed", " Amr", "May", "Aya" };
+            //// A , O , U , I , E
+
+            //var Result = from N in Names
+            //             select Regex.Replace(N, "[AQUIEaouie]", string.Empty)
+            //             into NoVowelNames
+            //             where NoVowelNames.Length > 3
+            //             select NoVowelNames;
+            ////Into => Restart Query With Introducing A New Range Variable : NoVowelNames
+
+            //Result = from N in Names
+            //         let NoVowelNames = Regex.Replace(N, "[AQUIEaouie]", string.Empty)
+            //         where NoVowelNames.Length > 3
+            //         select NoVowelNames;
+
+            ////Let => Continue Query With Adding New Range Variable : NoVowelNames 
+
+            //foreach (var Name in Result)
+            //     Console.WriteLine(Name);
+              
             #endregion
         }
     }
