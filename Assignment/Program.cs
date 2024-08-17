@@ -41,7 +41,30 @@
             }
             #endregion
 
+            #region 3. Get the products with the cheapest price in each category (Use Let)
 
+            var cheapestProductsPerCategory = products.GroupBy(p => p.Category).Select(g =>
+            {
+                var cheapestPrice = g.Min(p => p.UnitPrice);
+                return new
+                {
+                    Category = g.Key,
+                    Products = g.Where(p => p.UnitPrice == cheapestPrice).ToList()
+                };
+            }
+            );
+
+            Console.WriteLine("\nCheapest Products Per Category:");
+            foreach (var item in cheapestProductsPerCategory)
+            {
+                Console.WriteLine($"Category: {item.Category}");
+                foreach (var product in item.Products)
+                {
+                    Console.WriteLine($"    Product: {product.ProductName}, Price: {product.UnitPrice}");
+                }
+            }
+
+            #endregion
 
 
 
