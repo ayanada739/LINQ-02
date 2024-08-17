@@ -49,24 +49,69 @@ namespace LINQ_02
             //Result = Enumerable.Repeat(2, 100);
             // Return IEnumerable Of 100 Element Each One = 2
 
-           //var Result = Enumerable.Repeat(new Product(), 100);
-           // // Return IEnumerable Of 100  Product
+            //var Result = Enumerable.Repeat(new Product(), 100);
+            // // Return IEnumerable Of 100  Product
 
-           // var arrayProduct = Enumerable.Empty<Product>().ToArray();
+            // var arrayProduct = Enumerable.Empty<Product>().ToArray();
 
-           // Product[] Products = new Product[0];
-           // //Both Will Generate an Empty Array of Products
+            // Product[] Products = new Product[0];
+            // //Both Will Generate an Empty Array of Products
 
-           // var List = Enumerable.Empty<Product>().ToList();
-           // List<Product> products02 = new List<Product>();
-           // //Both Will Generate an Empty List of Products
+            // var List = Enumerable.Empty<Product>().ToList();
+            // List<Product> products02 = new List<Product>();
+            // //Both Will Generate an Empty List of Products
 
-           // foreach (var item in Result)
-           // {
-           //     Console.WriteLine($"item");
-           // }
+            // foreach (var item in Result)
+            // {
+            //     Console.WriteLine($"item");
+            // }
 
             #endregion
+
+            #region Set Operators [Union Family] - Deffered Excution
+
+            //var Seq01 = Enumerable.Range(0, 100); //0..99
+            //var Seq02 = Enumerable.Range(50, 100); //50..149
+
+            ////var Result = Seq01.Union(Seq02);
+            ////var Result = Seq01.Concat(Seq02);
+
+            ////Result = Result.Distinct(); //Remove Duplication
+
+            ////var Result = Seq01.Intersect(Seq02); // 50 .. 90
+
+            //var Result = Seq01.Except(Seq02); // 0..49
+
+
+            //Console.WriteLine("\n========Seq01==========");
+
+
+            //foreach (var item in Seq01)
+            //{
+            //    Console.WriteLine($"{item} , ");
+            //}
+
+            //Console.WriteLine("\n=========Seq02=========");
+
+
+            //foreach (var item in Seq02)
+            //{
+            //    Console.WriteLine($"{item} , ");
+            //}
+
+            //Console.WriteLine("\n=========Concat=========");
+
+
+            //foreach (var item in Result)
+            //  {
+            //      Console.WriteLine($"item");
+            //  }
+
+
+
+                #endregion
+
+
         }
     }
 }
