@@ -153,6 +153,102 @@ namespace LINQ_02
             //}
             #endregion
 
+            #region Grouping Operators
+            #region Get Products Grouped by Category
+            // Query Syntax
+            //var Result = from P in ProductsList
+            //            group P by P.Category;
+
+            // Fluent Syntax
+            //var Result = ProductsList.GroupBy(P => P.Category);
+
+            //foreach (var category in Result)
+            //{
+            //    Console.WriteLine(category.key); // Name of Category
+            //    foreach (var Product in category)
+            //        Console.WriteLine($"   {Product.ProductName} ");
+            //}
+
+            #endregion
+
+            #region Get Products in Stock Grouped by Category
+
+            //var Result = ProductsList.Where(P => P.UnitsInStock > 0)
+            //                         .GroupBy(P => P.Category);
+
+            //Query Syntax
+            //var Result = from P in ProductsList
+            //             where P.UnitsInStock > 0
+            //             group P by P.Category;
+
+            #endregion
+
+            #region Get Products in Stock Grouped by Category That Contains More Than 10 Product
+
+            //// Query Syntax
+
+            //var Result = from P in ProductsList
+            //             where P.UnitsInStock > 0
+            //             group P by P.Category
+            //             into Category
+            //             where Category.Count() > 10
+            //             select Category;
+
+            //// FLuent Syntax
+
+            //Result = ProductsList.Where(P => P.UnitsInStock > 0)
+            //                    .GroupBy(P => P.Category)
+            //                    .where(P => P.Count() > 10);
+
+
+
+            #endregion
+
+            #region Get Products in Stock Grouped by Category That Contains More Than 10 Product And Number Of Products
+
+            //// Fluent Syntax
+
+            //var Result = ProductsList.Where(P => P.UnitsInStock > 0)
+            //                          .GroupBy(P => P.Category)
+            //                          .Where(C => C.count() > 10)
+            //                          .Select(X => new
+            //                          {
+            //                              CategoryName = X.Key,
+            //                              Count =  X.Count()
+            //                          });
+
+            ////Query Syntax
+
+            //Result = from P in ProductsList
+            //         where P.UnitsInStock > 0
+            //         group P by P.Category
+            //         into Category
+            //         where Category.Count() > 10
+            //         select new
+            //         {
+            //             CategoryName = Category.Key,
+            //             Count = Category.Count()
+            //         };
+
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            #endregion
+
+            //foreach (var category in Result)
+            //{
+            //    Console.WriteLine(category.key); // Name of Category
+            //    foreach (var Product in category)
+            //        Console.WriteLine($"   {Product.ProductName} ");
+            //}
+
+            #endregion
+
 
         }
     }
