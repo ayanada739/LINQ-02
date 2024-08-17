@@ -124,7 +124,7 @@
             #endregion
 
 
-            // Set Operators
+            //LINQ - Set Operators
 
             #region 1. Find the unique Category names from Product List
 
@@ -315,8 +315,57 @@
             #endregion
 
 
+            //LINQ – Grouping Operators
 
+            #region 1. Use group by to partition a list of numbers by their remainder when divided by 5.
+            List<int> numberList = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
 
+            var numbersGroupedByRemainder = numberList.GroupBy(n => n % 5);
+
+            Console.WriteLine("\nNumbers grouped by remainder when divided by 5:");
+
+            foreach (var group in numbersGroupedByRemainder)
+            {
+                Console.WriteLine($"\nRemainder {group.Key}:");
+                foreach (var number in group)
+                {
+                    Console.WriteLine($"    {number}");
+                }
+            }
+
+            #endregion
+
+            #region 2. Use group by to partition a list of words by their first letter.
+
+            var wordsGroupedByFirstLetter = dictionaryWords.GroupBy(word => word[0]);
+
+            Console.WriteLine("\nWords grouped by their first letter:");
+            foreach (var group in wordsGroupedByFirstLetter)
+            {
+                Console.WriteLine($"\nLetter {group.Key}:");
+                foreach (var word in group)
+                {
+                    Console.WriteLine($"    {word}");
+                }
+            }
+            #endregion
+
+            #region 3. Group words that consist of the same characters together using a custom comparer.
+            string[] wordArray = { "from", "salt", "earn", "last", "near", "form" };
+
+            var wordsGroupedByAnagram = wordArray
+           .GroupBy(word => String.Concat(word.OrderBy(c => c)));
+
+            Console.WriteLine("\nWords grouped by anagrams:");
+            foreach (var group in wordsGroupedByAnagram)
+            {
+                Console.WriteLine();
+                foreach (var word in group)
+                {
+                    Console.WriteLine($"    {word}");
+                }
+            }
+            #endregion
 
 
 
