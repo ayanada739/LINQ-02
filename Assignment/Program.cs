@@ -257,6 +257,66 @@
             #endregion
 
 
+            //LINQ - Quantifiers
+
+            #region 1. Determine if any of the words in dictionary_english.txt (Read dictionary_english.txt into Array of String First) contain the substring 'ei'.
+
+            string[] dictionaryWords = System.IO.File.ReadAllLines("dictionary_english.txt");
+            bool containsEi = dictionaryWords.Any(word => word.Contains("ei"));
+
+            Console.WriteLine($"\nAny word contains 'ei': {containsEi}");
+
+            #endregion
+
+            #region 2. Return a grouped a list of products only for categories that have at least one product that is out of stock.
+
+            var categoriesWithOutOfStockProducts = products
+            .GroupBy(p => p.Category)
+            .Where(g => g.Any(p => p.UnitsInStock == 0))
+            .Select(g => new
+            {
+                Category = g.Key,
+                Products = g.ToList()
+            }
+            );
+
+            Console.WriteLine("\nCategories with at least one product out of stock:");
+            foreach (var item in categoriesWithOutOfStockProducts)
+            {
+                Console.WriteLine($"Category: {item.Category}");
+                foreach (var product in item.Products)
+                {
+                    Console.WriteLine($"    Product: {product.ProductName}, Units in Stock: {product.UnitsInStock}");
+                }
+            }
+            #endregion
+
+            #region 3. Return a grouped a list of products only for categories that have all of their products in stock.
+
+            var categoriesWithAllProductsInStock = products
+           .GroupBy(p => p.Category)
+           .Where(g => g.All(p => p.UnitsInStock > 0))
+           .Select(g => new
+           {
+               Category = g.Key,
+               Products = g.ToList()
+           }
+           );
+
+            Console.WriteLine("\nCategories with all products in stock:");
+            foreach (var item in categoriesWithAllProductsInStock)
+            {
+                Console.WriteLine($"Category: {item.Category}");
+                foreach (var product in item.Products)
+                {
+                    Console.WriteLine($"    Product: {product.ProductName}, Units in Stock: {product.UnitsInStock}");
+                }
+            }
+            #endregion
+
+
+
+
 
 
 
