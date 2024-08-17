@@ -66,6 +66,22 @@
 
             #endregion
 
+            #region 4. Create one sequence that contains the first letters of product names that are not also first letters of customer names.
+
+            var mostExpensivePricePerCategory = products.GroupBy(p => p.Category).Select(g => new
+            {
+               Category = g.Key,
+               MostExpensivePrice = g.Max(p => p.UnitPrice)
+            } 
+            );
+
+            Console.WriteLine("\nMost Expensive Price Per Category:");
+            foreach (var item in mostExpensivePricePerCategory)
+            {
+                Console.WriteLine($"Category: {item.Category}, Most Expensive Price: {item.MostExpensivePrice}");
+            }
+            #endregion
+
 
 
 
