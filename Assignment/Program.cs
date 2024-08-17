@@ -124,6 +124,67 @@
             #endregion
 
 
+            // Set Operators
+
+            #region 1. Find the unique Category names from Product List
+
+            var uniqueCategories = products.Select(p => p.Category).Distinct();
+
+            Console.WriteLine("\nUnique Category Names:");
+            foreach (var category in uniqueCategories)
+            {
+                Console.WriteLine($"Category: {category}");
+            }
+            #endregion
+
+            #region 2. Produce a Sequence containing the unique first letter from both product and customer names.
+
+            var uniqueFirstLetters = products.Select(p => p.ProductName[0])
+                                        .Union(customers.Select(c => c.CustomerName[0]))
+                                        .Distinct();
+
+            Console.WriteLine("\nUnique First Letters from Product and Customer Names:");
+            foreach (var letter in uniqueFirstLetters)
+            {
+                Console.WriteLine($"Letter: {letter}");
+            }
+            #endregion
+
+            #region 3. Create one sequence that contains the common first letter from both product and customer names.
+
+            var commonFirstLetters = products.Select(p => p.ProductName[0])
+                                        .Intersect(customers.Select(c => c.CustomerName[0]));
+
+            Console.WriteLine("\nCommon First Letters from Product and Customer Names:");
+            foreach (var letter in commonFirstLetters)
+            {
+                Console.WriteLine($"Letter: {letter}");
+            }
+            #endregion
+
+            #region 4. Create one sequence that contains the first letters of product names that are not also first letters of customer names.
+
+            var productFirstLettersNotInCustomers = products.Select(p => p.ProductName[0])
+                                                      .Except(customers.Select(c => c.CustomerName[0]));
+
+            Console.WriteLine("\nFirst Letters of Product Names Not in Customer Names:");
+            foreach (var letter in productFirstLettersNotInCustomers)
+            {
+                Console.WriteLine($"Letter: {letter}");
+            }
+            #endregion
+
+            #region 5. Create one sequence that contains the last Three Characters in each name of all customers and products, including any duplicates
+
+            var lastThreeChars = products.Select(p => p.ProductName.Length > 3 ? p.ProductName.Substring(p.ProductName.Length - 3) : p.ProductName)
+                                    .Union(customers.Select(c => c.CustomerName.Length > 3 ? c.CustomerName.Substring(c.CustomerName.Length - 3) : c.CustomerName));
+
+            Console.WriteLine("\nLast Three Characters in Product and Customer Names:");
+            foreach (var chars in lastThreeChars)
+            {
+                Console.WriteLine($"Chars: {chars}");
+            }
+            #endregion
         }
     }
 }
