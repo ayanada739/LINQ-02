@@ -249,7 +249,33 @@ namespace LINQ_02
 
             #endregion
 
+            #region Partitioning Operators
 
+            //var Result= ProductList.Take(10);
+            //// Take Number Of Elements From First Only
+            //Result = ProductsList.Where(P => P.UnitsInStock > 0) . Take(5);
+            //Result =  ProductsList . Where(P=> P.UnitsInStock > 0) . TakeLast(10);
+            //// TakeLast Take Number of Elements From Last Only
+
+            //var Result = ProductsList.Where(P => P.UnitsInStock == 0).Skip(2);
+            //Skip Number of Elements From First And Get Rest of Elements
+            //Result = ProductsList.Where(P => P.UnitsInStock == 0).SkipLast(2);
+            //Skip Number of Elements From First And Get Rest of Elements
+
+            //var Result = ProductsList.Skip(10).Take(10);
+
+            //int[] Numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2};
+
+            ////var Result = Numbers.TakeWhile((Num, I )=> Num > I);
+
+            //var Result = Numbers.SkipWhile(Num => Num % 3 != 0);
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            #endregion
         }
     }
 }
