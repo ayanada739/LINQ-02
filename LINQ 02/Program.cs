@@ -130,6 +130,29 @@ namespace LINQ_02
 
             #endregion
 
+            #region Zip Operator - ZIP
+
+            //string[] Name = { "Omar", "Ahmed", " Amr", "May", "Aya" };
+            //int[] Numbers = Enumerable.Range(1, 10).ToArray();
+            //Char[] Chars = { 'a', 'b', 'c', 'd', 'e' };
+
+            ////var Result = Name.Zip(Numbers);
+            //// (Omar , 1)
+            //// (Ahmed , 2)
+            //// (Amr , 3)
+            //// (May , 4)
+            //// (Aya , 5)
+
+            ////var Result = Name.Zip(Numbers , (Name , Number)=> new { index = Number , Name} );
+
+            //var Result = Name.Zip(Numbers, Chars);
+
+            //foreach (var item in Result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            #endregion
+
 
         }
     }
