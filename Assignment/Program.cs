@@ -82,6 +82,30 @@
             }
             #endregion
 
+            #region 5. Create one sequence that contains the last Three Characters in each name of all customers and products, including any duplicates
+
+            var mostExpensiveProductsPerCategory = products.GroupBy(p => p.Category).Select(g =>
+            {
+                var mostExpensivePrice = g.Max(p => p.UnitPrice);
+                  return new
+                  {
+                     Category = g.Key,
+                     Products = g.Where(p => p.UnitPrice == mostExpensivePrice).ToList()
+                  };
+            }
+            );
+
+            Console.WriteLine("\nMost Expensive Products Per Category:");
+            foreach (var item in mostExpensiveProductsPerCategory)
+            {
+                Console.WriteLine($"Category: {item.Category}");
+                foreach (var product in item.Products)
+                {
+                    Console.WriteLine($"    Product: {product.ProductName}, Price: {product.UnitPrice}");
+                }
+            }
+            #endregion
+
 
 
 
